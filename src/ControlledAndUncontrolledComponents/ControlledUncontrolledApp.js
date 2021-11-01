@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ControlledForm } from "./ControlledForm";
 import { ControlledModal } from "./ControlledModal";
+import { ControlledOnboardingFlow } from "./ControlledOnboardingFlow";
 import { UncontrolledModal } from "./UncontrolledModal";
 import { UncontrolledForm } from "./UncontrolledForm";
 import { UncontrolledOnboardingFlow } from "./UncontrolledOnboardingFlow";
@@ -42,7 +43,23 @@ const StepThree = ({ goToNext }) => {
   const [hairColor, setHairColor] = useState("");
   return (
     <>
-      <h1>Step 3</h1>
+      <h1>Congratulations!</h1>
+      <input
+        type="text"
+        name="hair"
+        placeholder="Hair Color"
+        value={hairColor}
+        onChange={(e) => setHairColor(e.target.value)}
+      />
+      <button onClick={() => goToNext({})}>Next</button>
+    </>
+  );
+};
+const StepFour = ({ goToNext }) => {
+  const [hairColor, setHairColor] = useState("");
+  return (
+    <>
+      <h1>Step 4</h1>
       <input
         type="text"
         name="hair"
@@ -57,6 +74,20 @@ const StepThree = ({ goToNext }) => {
 
 function ControlledUncontrolledApp() {
   const [shouldShowModal, setShouldShowModal] = useState(false);
+  const [onboardingData, setOnboardingData] = useState({});
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const onNext = (steepData) => {
+    console.log(currentIndex);
+    setOnboardingData({ ...onboardingData, ...steepData });
+    setCurrentIndex(currentIndex + 1);
+    onFinish();
+  };
+
+  const onFinish = () => {
+    console.log(onboardingData);
+  };
+
   return (
     <>
       <ControlledModal
@@ -72,13 +103,12 @@ function ControlledUncontrolledApp() {
 
       <ControlledForm />
 
-      <UncontrolledOnboardingFlow
-        onFinish={(data) => console.log("Finish: ", data)}
-      >
+      <ControlledOnboardingFlow currentIndex={currentIndex} onNext={onNext}>
         <StepOne />
         <StepTwo />
-        <StepThree />
-      </UncontrolledOnboardingFlow>
+        {onboardingData.age >= 62 && <StepThree />}
+        <StepFour />
+      </ControlledOnboardingFlow>
     </>
   );
 }
