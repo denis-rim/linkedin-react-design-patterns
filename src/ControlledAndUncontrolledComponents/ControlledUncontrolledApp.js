@@ -5,24 +5,55 @@ import { UncontrolledModal } from "./UncontrolledModal";
 import { UncontrolledForm } from "./UncontrolledForm";
 import { UncontrolledOnboardingFlow } from "./UncontrolledOnboardingFlow";
 
-const StepOne = ({ goToNext }) => (
-  <>
-    <h1>Step 1</h1>
-    <button onClick={goToNext}>Next</button>
-  </>
-);
-const StepTwo = ({ goToNext }) => (
-  <>
-    <h1>Step 2</h1>
-    <button onClick={goToNext}>Next</button>
-  </>
-);
-const StepThree = ({ goToNext }) => (
-  <>
-    <h1>Step 3</h1>
-    <button onClick={goToNext}>Next</button>
-  </>
-);
+const StepOne = ({ goToNext }) => {
+  const [name, setName] = useState("");
+  return (
+    <>
+      <h1>Step 1</h1>
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <button onClick={() => goToNext({ name })}>Next</button>
+    </>
+  );
+};
+
+const StepTwo = ({ goToNext }) => {
+  const [age, setAge] = useState(0);
+  return (
+    <>
+      <h1>Step 2</h1>
+      <input
+        type="number"
+        name="name"
+        placeholder="Name"
+        value={age}
+        onChange={(e) => Number(setAge(e.target.value))}
+      />
+      <button onClick={() => goToNext({ age })}>Next</button>
+    </>
+  );
+};
+const StepThree = ({ goToNext }) => {
+  const [hairColor, setHairColor] = useState("");
+  return (
+    <>
+      <h1>Step 3</h1>
+      <input
+        type="text"
+        name="hair"
+        placeholder="Hair Color"
+        value={hairColor}
+        onChange={(e) => setHairColor(e.target.value)}
+      />
+      <button onClick={() => goToNext({ hairColor })}>Next</button>
+    </>
+  );
+};
 
 function ControlledUncontrolledApp() {
   const [shouldShowModal, setShouldShowModal] = useState(false);
@@ -41,7 +72,9 @@ function ControlledUncontrolledApp() {
 
       <ControlledForm />
 
-      <UncontrolledOnboardingFlow>
+      <UncontrolledOnboardingFlow
+        onFinish={(data) => console.log("Finish: ", data)}
+      >
         <StepOne />
         <StepTwo />
         <StepThree />
