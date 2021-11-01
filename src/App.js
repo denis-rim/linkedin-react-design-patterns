@@ -1,4 +1,5 @@
 import "./App.css";
+import { Modal } from "./Modal";
 import { NumberedList } from "./NumberedList";
 import { persons, products } from "./peoplesAndProducts";
 import { LargePersonListItem } from "./people/LargePersonListItem";
@@ -19,11 +20,13 @@ const LeftHandComponent = ({ name }) => {
         itemComponent={SmallPersonListItem}
       />
       <h3>Persons large:</h3>
-      <NumberedList
-        items={persons}
-        resourceName="person"
-        itemComponent={LargePersonListItem}
-      />
+      <Modal>
+        <NumberedList
+          items={persons}
+          resourceName="person"
+          itemComponent={LargePersonListItem}
+        />
+      </Modal>
     </div>
   );
 };
@@ -38,21 +41,25 @@ const RightHandComponent = ({ message }) => {
         itemComponent={SmallProductListItem}
       />
       <h3>Products large:</h3>
-      <NumberedList
-        items={products}
-        resourceName="product"
-        itemComponent={LargeProductListItem}
-      />
+      <Modal>
+        <NumberedList
+          items={products}
+          resourceName="product"
+          itemComponent={LargeProductListItem}
+        />
+      </Modal>
     </div>
   );
 };
 
 function App() {
   return (
-    <SplitScreen leftWeight={1} rightWeight={3}>
-      <LeftHandComponent name="Denis" />
-      <RightHandComponent message="Hello" />
-    </SplitScreen>
+    <>
+      <SplitScreen leftWeight={1} rightWeight={3}>
+        <LeftHandComponent name="Denis" />
+        <RightHandComponent message="Hello" />
+      </SplitScreen>
+    </>
   );
 }
 
