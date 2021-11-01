@@ -1,21 +1,18 @@
 import { CurrentUserLoader } from "./CurrentUserLoader";
+import { ProductInfo } from "./ProductInfo";
+import { ResourceLoader } from "./ResourceLoader";
 import { UserInfo } from "./UserInfo";
 import { UserLoader } from "./UserLoader";
 
 function ContainerComponentApp() {
   return (
     <>
-      <UserLoader userId="222">
+      <ResourceLoader resourceUrl="/users/222" resourceName="user">
         <UserInfo />
-      </UserLoader>
-
-      <UserLoader userId="333">
-        <UserInfo />
-      </UserLoader>
-
-      <UserLoader userId="444">
-        <UserInfo />
-      </UserLoader>
+      </ResourceLoader>
+      <ResourceLoader resourceUrl="/products/2222" resourceName="product">
+        <ProductInfo />
+      </ResourceLoader>
     </>
   );
 }
