@@ -1,9 +1,9 @@
-export const SmallProductListItem = ({ person }) => {
-  const { name, age } = person;
+export const SmallProductListItem = ({ product }) => {
+  const { name, price } = product;
 
   return (
-    <p>
-      Name: {name} Age: {age}
-    </p>
+    <h3>
+      {name} - {price}
+    </h3>
   );
 };

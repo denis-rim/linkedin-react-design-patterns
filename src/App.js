@@ -1,7 +1,10 @@
 import "./App.css";
-import { people } from "./people";
+import { NumberedList } from "./NumberedList";
+import { persons, products } from "./peoplesAndProducts";
 import { LargePersonListItem } from "./people/LargePersonListItem";
 import { SmallPersonListItem } from "./people/SmallPersonListItem";
+import { LargeProductListItem } from "./products/LargeProductListItem";
+import { SmallProductListItem } from "./products/SmallProductListItem";
 import { RegularList } from "./RegularList";
 import { SplitScreen } from "./SplitScreen";
 
@@ -9,13 +12,15 @@ const LeftHandComponent = ({ name }) => {
   return (
     <div style={{ backgroundColor: "green" }}>
       <h1>{name}</h1>
+      <h3>Persons small:</h3>
       <RegularList
-        items={people}
+        items={persons}
         resourceName="person"
         itemComponent={SmallPersonListItem}
       />
-      <RegularList
-        items={people}
+      <h3>Persons large:</h3>
+      <NumberedList
+        items={persons}
         resourceName="person"
         itemComponent={LargePersonListItem}
       />
@@ -23,7 +28,23 @@ const LeftHandComponent = ({ name }) => {
   );
 };
 const RightHandComponent = ({ message }) => {
-  return <h1 style={{ backgroundColor: "red" }}>{message}</h1>;
+  return (
+    <div style={{ backgroundColor: "red" }}>
+      <h1>{message}</h1>
+      <h3>Products small:</h3>
+      <RegularList
+        items={products}
+        resourceName="product"
+        itemComponent={SmallProductListItem}
+      />
+      <h3>Products large:</h3>
+      <NumberedList
+        items={products}
+        resourceName="product"
+        itemComponent={LargeProductListItem}
+      />
+    </div>
+  );
 };
 
 function App() {
