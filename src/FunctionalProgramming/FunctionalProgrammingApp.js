@@ -1,4 +1,5 @@
 import { BigSuccessButton, DangerButton } from "./composition";
+import { BigSuccessButtonPart, DangerButtonPart } from "./partiallyApply";
 import { RecursiveComponent } from "./RecursiveComponent";
 
 const nestedObject = {
@@ -28,6 +29,8 @@ function FunctionalProgrammingApp() {
     <>
       <DangerButton text="Danger" />
       <BigSuccessButton text="Noice" />
+      <DangerButtonPart text="Partially Danger" />
+      <BigSuccessButtonPart text="Partially Noice" />
       <RecursiveComponent data={nestedObject} />
     </>
   );
