@@ -3,6 +3,7 @@ import { useState } from "react";
 import ContainerComponentApp from "./ContainerComponents/ContainerComponentApp";
 import ControlledUncontrolledApp from "./ControlledAndUncontrolledComponents/ControlledUncontrolledApp";
 import CustomReactHooksApp from "./CustomReactHooks/CustomReactHooksApp";
+import FunctionalProgrammingApp from "./FunctionalProgramming/FunctionalProgrammingApp";
 import HigherOrderComponentsApp from "./HigherOrderComponents/HigherOrderComponentsApp";
 import AppLayoutComponents from "./LayoutComponents/AppLayoutComponents";
 
@@ -19,6 +20,7 @@ function App() {
         </button>
         <button onClick={() => setSection(4)}>HOC Components</button>
         <button onClick={() => setSection(5)}>Custom React Hooks</button>
+        <button onClick={() => setSection(6)}>Functional Programming</button>
       </div>
       {section === 1 ? (
         <AppLayoutComponents />
@@ -30,6 +32,8 @@ function App() {
         <HigherOrderComponentsApp />
       ) : section === 5 ? (
         <CustomReactHooksApp />
+      ) : section === 6 ? (
+        <FunctionalProgrammingApp />
       ) : null}
     </>
   );
