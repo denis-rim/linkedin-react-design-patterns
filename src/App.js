@@ -2,6 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import ContainerComponentApp from "./ContainerComponents/ContainerComponentApp";
 import ControlledUncontrolledApp from "./ControlledAndUncontrolledComponents/ControlledUncontrolledApp";
+import CustomReactHooksApp from "./CustomReactHooks/CustomReactHooksApp";
 import HigherOrderComponentsApp from "./HigherOrderComponents/HigherOrderComponentsApp";
 import AppLayoutComponents from "./LayoutComponents/AppLayoutComponents";
 
@@ -17,6 +18,7 @@ function App() {
           Controlled and Uncontrolled Components
         </button>
         <button onClick={() => setSection(4)}>HOC Components</button>
+        <button onClick={() => setSection(5)}>Custom React Hooks</button>
       </div>
       {section === 1 ? (
         <AppLayoutComponents />
@@ -26,6 +28,8 @@ function App() {
         <ControlledUncontrolledApp />
       ) : section === 4 ? (
         <HigherOrderComponentsApp />
+      ) : section === 5 ? (
+        <CustomReactHooksApp />
       ) : null}
     </>
   );

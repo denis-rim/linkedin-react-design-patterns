@@ -25,11 +25,11 @@ function ContainerComponentApp() {
 
   return (
     <>
-      <ResourceLoader resourceUrl="/users/222" resourceName="user">
+      <ResourceLoader resourceUrl="/users/123" resourceName="user">
         <UserInfo />
       </ResourceLoader>
       <DataSource
-        getDataFunction={getServerData("/users/333")}
+        getDataFunction={getServerData("/users/234")}
         resourceName="user"
       >
         <UserInfo />
