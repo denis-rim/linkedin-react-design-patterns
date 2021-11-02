@@ -1,3 +1,4 @@
+import { BigSuccessButton, DangerButton } from "./composition";
 import { RecursiveComponent } from "./RecursiveComponent";
 
 const nestedObject = {
@@ -23,7 +24,13 @@ const nestedObject = {
 };
 
 function FunctionalProgrammingApp() {
-  return <RecursiveComponent data={nestedObject} />;
+  return (
+    <>
+      <DangerButton text="Danger" />
+      <BigSuccessButton text="Noice" />
+      <RecursiveComponent data={nestedObject} />
+    </>
+  );
 }
 
 export default FunctionalProgrammingApp;

@@ -7,6 +7,8 @@ export const RecursiveComponent = ({ data }) => {
 
   const pairs = Object.entries(data);
 
+  console.log(pairs);
+
   return (
     <>
       {pairs.map(([key, value]) => (
